@@ -156,6 +156,7 @@ test "Universal Engine: Stream append-only log with capacity limit" {
 test "Universal Engine: WAL frame writer, CRC verification, and replay" {
     const allocator = testing.allocator;
     const wal_path = "tmp/test_universal.wal";
+    std.Io.Dir.cwd().createDirPath(testing.io, "tmp") catch {};
     std.Io.Dir.cwd().deleteFile(testing.io, wal_path) catch {};
     defer std.Io.Dir.cwd().deleteFile(testing.io, wal_path) catch {};
 
@@ -199,6 +200,7 @@ test "Universal Engine: Engine coordinator atomic snapshot and WAL compaction" {
     const allocator = testing.allocator;
     const snap_path = "tmp/test_engine_snap.json";
     const wal_path = "tmp/test_engine_wal.wal";
+    std.Io.Dir.cwd().createDirPath(testing.io, "tmp") catch {};
     std.Io.Dir.cwd().deleteFile(testing.io, snap_path) catch {};
     std.Io.Dir.cwd().deleteFile(testing.io, wal_path) catch {};
     defer std.Io.Dir.cwd().deleteFile(testing.io, snap_path) catch {};
